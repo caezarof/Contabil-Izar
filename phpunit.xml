@@ -12,11 +12,19 @@
             <directory>tests/Feature</directory>
         </testsuite>
     </testsuites>
+
     <source>
         <include>
-            <directory>app</directory>
+            <directory suffix=".php">app</directory>
+            <directory suffix=".php">src</directory>
         </include>
     </source>
+
+    <logging>
+        <log type="coverage-html" target="build/coverage"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
+    
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="APP_MAINTENANCE_DRIVER" value="file"/>
@@ -29,16 +37,5 @@
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
-
-        <coverage>
-        <include>
-            <directory suffix=".php">./app</directory>
-            <directory suffix=".php">./src</directory>
-        </include>
-        <report>
-            <html outputDirectory="build/coverage"/>
-            <clover outputFile="build/logs/clover.xml"/>
-        </report>
-    </coverage>
     </php>
 </phpunit>
